@@ -1,0 +1,66 @@
+<!-- filepath: c:\xampp\htdocs\inventory_system\modules\sales_trends_report.php -->
+<?php
+session_start();
+require_once '../includes/db.php';
+require_once '../includes/auth.php';
+require_once '../includes/helpers.php';
+
+// Restrict access to Admin (RoleID = 1)
+if ($_SESSION['RoleID'] != 1) {
+    header("Location: ../index.php");
+    exit;
+}
+
+// Fetch sales trends
+$query = "SELECT DATE(SaleDate) AS SaleDate, SUM(TotalAmount) AS TotalRevenue FROM Sales GROUP BY DATE(SaleDate) ORDER BY SaleDate";
+$stmt = $pdo->query($query);
+$salesTrends = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Export to CSV if requested
+if (isset($_GET['export']) && $_GET['export'] === 'csv') {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename=sales_trends_report.csv');
+    $output = fopen('php://output', 'w');
+    fputcsv($output, ['Sale Date', 'Total Revenue']);
+    foreach ($salesTrends as $trend) {
+        fputcsv($output, $trend);
+    }
+    fclose($output);
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Trends Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <a href="../homepage.php" class="btn btn-success mb-4">Back to Home</a>
+        <h1 class="text-center mb-4">Sales Trends Report</h1>
+
+        <a href="sales_trends_report.php?export=csv" class="btn btn-primary mb-4">Export to CSV</a>
+
+        <table class="table table-striped table-bordered text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>Sale Date</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($salesTrends as $trend): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($trend['SaleDate']); ?></td>
+                        <td><?php echo htmlspecialchars($trend['TotalRevenue']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+/* General Page Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #74c727, #06f82a);
+    color: #05fb3e;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.search-bar {
+    width: 100%; /* Make the search bar take up the full width of its container */
+    max-width: none; /* Remove any maximum width constraints */
+    margin-right: 10px; /* Add spacing between the search bar and the button */
+}
+
+.table {
+    width: 100%; /* Make the table take up the full width */
+    margin-bottom: 1rem; /* Add spacing below the table */
+    border-collapse: collapse; /* Ensure borders are collapsed */
+}
+
+
+.table th, .table td {
+    text-align: center; /* Center-align text in table cells */
+    vertical-align: middle; /* Vertically align text in the middle */
+}
+
+/* Ensure buttons are properly aligned and spaced */
+.table td .btn {
+    margin: 0 5px; /* Add spacing between buttons */
+    display: inline-block; /* Ensure buttons are inline */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #007bff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-item {
+    margin: 0 15px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+    background-color: #0056b3;
+}
+
+
+/* Dashboard Container */
+.container-fluid {
+    margin-left: 250px;
+    padding: 20rem;
+    width: calc(250% - 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Dashboard Header */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Card Styles */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Chart Container */
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+}
+
+/* Loading Indicator */
+#loading {
+    font-size: 1.5rem;
+    color: #007bff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .chart-container {
+        max-width: 100%;
+    }
+}

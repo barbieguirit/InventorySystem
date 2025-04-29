@@ -1,0 +1,91 @@
+/* Base Styles for Consistency */
+body {
+    font-size: 16px; /* Default font size */
+    font-family: Arial, sans-serif; /* Default font family */
+    margin: 0;
+    padding: 0;
+    background-color: #7ff708; /* Background color for consistency */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem; /* Default size for h1 */
+    color: #09ef3b; /* Default color for h1 */
+}
+
+h2 {
+    font-size: 1.8rem; /* Default size for h2 */
+    color: #2fff00; /* Default color for h2 */
+}
+.search-bar {
+    flex-grow: 1; /* Allow the input to grow and take up available space */
+    max-width: 600px; /* Optional: Set a maximum width */
+}
+.form-control {
+    width: 100%; /* Ensure the search bar takes full width */
+    max-width: 500px; /* Optional: Set a maximum width */
+}
+
+.navbar {
+    width: 250px !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    background-color: #343a40 !important;
+    color: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 20px !important;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.nav-item {
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #495057;
+}
+
+.nav-link.active {
+    background-color: #1abc9c;
+    color: white;
+}
+
+/* Main Content Styles */
+.container-fluid {
+    margin-left: 250px; /* Same as the navbar width */
+    padding: 20px;
+    width: calc(100% - 250px); /* Adjust width to account for the navbar */
+}
